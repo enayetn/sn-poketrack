@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Pokemon" max_length="40" name="x_8380_poketrack_pokemon" type="collection">
+        <element label="ID" max_length="40" name="id" type="integer"/>
+        <element display="true" label="Name" max_length="255" name="name" type="string"/>
+        <element label="Notify" max_length="40" name="notify" type="boolean"/>
+        <element label="PW" max_length="255" name="pw" type="password2"/>
+    </element>
+</database>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_8380_poketrack_pokegodata</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Abort Duplicates</name>
+        <order>110</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	// Add your code here
+	var gr = new GlideRecord("x_8380_poketrack_pokegodata");
+	//gs.info(current.pokemon.name +"//"+current.latitude+"//"+current.longitude);
+	gr.addQuery("pokemonid", current.pokemonid);
+	gr.addQuery("latitude",parseFloat(current.getValue('latitude')).toFixed(7));
+	gr.addQuery("longitude",parseFloat(current.getValue('longitude')).toFixed(7));
+	gr.addQuery("search_latitude",parseFloat(current.getValue('search_latitude')).toFixed(7));
+	gr.addQuery("search_longitude",parseFloat(current.getValue('search_longitude')).toFixed(7));
+	gr.addEncodedQuery("sys_created_on>javascript:gs.minutesAgoStart(15)^ORDERBYDESCsys_created_on");
+	gr.query();
+	
+	if (gr.next()) {
+		gs.info('Aborting insert of: ' + current.pokemon.name);
+		current.setAbortAction(true);
+	}
+
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>nabil.enayet</sys_created_by>
+        <sys_created_on>2016-07-30 00:57:33</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>1e2b56236ff4620040adfe764b3ee4fd</sys_id>
+        <sys_mod_count>16</sys_mod_count>
+        <sys_name>Abort Duplicates</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="poketrack" source="x_8380_poketrack">0308c9ab6f34620040adfe764b3ee48b</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="poketrack">0308c9ab6f34620040adfe764b3ee48b</sys_scope>
+        <sys_update_name>sys_script_1e2b56236ff4620040adfe764b3ee4fd</sys_update_name>
+        <sys_updated_by>nabil.enayet</sys_updated_by>
+        <sys_updated_on>2016-07-30 01:34:58</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=1e2b56236ff4620040adfe764b3ee4fd"/>
+</record_update>

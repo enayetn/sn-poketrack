@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[var x = document.getElementById("demo");
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude; 
+}]]></client_script>
+        <description>Set location for poke-tracker</description>
+        <direct>true</direct>
+        <endpoint>x_8380_poketrack_set_location.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	
+	<button onclick="getLocation()">Try It</button>
+	<p id="demo"></p>
+</j:jelly>]]></html>
+        <name>set_location</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>nabil.enayet</sys_created_by>
+        <sys_created_on>2016-07-30 20:44:22</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>eefb82f36ff8620040adfe764b3ee401</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>set_location</sys_name>
+        <sys_package display_value="poketrack" source="x_8380_poketrack">0308c9ab6f34620040adfe764b3ee48b</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="poketrack">0308c9ab6f34620040adfe764b3ee48b</sys_scope>
+        <sys_update_name>sys_ui_page_eefb82f36ff8620040adfe764b3ee401</sys_update_name>
+        <sys_updated_by>nabil.enayet</sys_updated_by>
+        <sys_updated_on>2016-07-30 20:45:40</sys_updated_on>
+    </sys_ui_page>
+</record_update>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element audit="true" label="PokeGoData" max_length="40" name="x_8380_poketrack_pokegodata" type="collection">
+        <element label="Data" max_length="255" name="data" type="string"/>
+        <element label="Expiration Time" max_length="255" name="expiration_time" type="string"/>
+        <element label="ID" max_length="255" name="id" type="string"/>
+        <element label="Is Alive" max_length="255" name="is_alive" type="boolean"/>
+        <element label="Journal Field" max_length="4000" name="journal_field" type="journal"/>
+        <element label="Latitude" max_length="155" name="latitude" type="float"/>
+        <element label="Longitude" max_length="155" name="longitude" type="float"/>
+        <element display="true" label="Pokemon" max_length="32" name="pokemon" reference="x_8380_poketrack_pokemon" type="reference"/>
+        <element label="PokemonID" max_length="40" name="pokemonid" type="string"/>
+        <element label="Search Latitude" max_length="32" name="search_latitude" type="float"/>
+        <element label="Search Longitude" max_length="32" name="search_longitude" type="float"/>
+        <element default="javascript:current.getTableName();" dynamic_default_value="b5cb83a85f220100a9ad2572f2b4773c" label="Class" max_length="80" name="sys_class_name" type="sys_class_name" use_dynamic_default="true"/>
+        <element label="UID" max_length="40" name="uid" type="string"/>
+        <index name="index">
+            <element name="pokemon"/>
+        </index>
+    </element>
+</database>
